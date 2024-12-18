@@ -248,7 +248,7 @@ const handlePlantsClick = (e) => {
   };
     return (
         <div>
-             <div className="navbar" style={styleObj}>
+            <div className="navbar" style={styleObj}>
             <div className="tag">
                <div className="luxury">
                <img src="https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_1280.png" alt="" />
@@ -267,10 +267,24 @@ const handlePlantsClick = (e) => {
             </div>
         </div>
         {!showCart? (
-        <div className="product-grid">
-
-
-        </div>
+            <div className="product-grid">
+                {plantsArray.map((plantsGroup, index) => (
+                    <div key={"group-"+index}>
+                        <h1><div>{plantsGroup.category}</div></h1>
+                        <div className="product-list">
+                            {plantsGroup.plants.map((plant, plantIndex) => (
+                                <div className="product-card" key={"plant-"+plantIndex}>
+                                    <p className="product-name">{plant.name}</p>
+                                    <img className="product-image" src={plant.image}></img>
+                                    <p className="product-cost">{plant.cost}</p>
+                                    <p  className="product-description">{plant.description}</p>
+                                    <button className="product-button" onClick={() => handleAddToCart(plant)}>Add to Cart</button>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                ))}
+            </div>
  ) :  (
     <CartItem onContinueShopping={handleContinueShopping}/>
 )}
