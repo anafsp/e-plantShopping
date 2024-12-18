@@ -19,10 +19,13 @@ export const CartSlice = createSlice({
         state.items = state.items.filter(item => item.name !== action.payload.name);
     },
     updateQuantity: (state, action) => {
-        const { name, quantity } = action.payload;
+        const { name, quantity, increment } = action.payload;
         const existingItem = state.items.find(item => item.name === name);
         if (existingItem) {
-            existingItem.quantity = quantity;
+            if(increment)
+                existingItem.quantity = quantity + 1;
+            else
+                existingItem.quantity = quantity - 1;
         } 
     },
   },
