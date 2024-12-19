@@ -120,6 +120,10 @@ body {
 .product-button:hover {
     background-color: #c0392b;
 }
+.product-button:disabled {
+    pointer-events: none;
+    background-color: grey;
+}
 
 /* Pseudo-elements - Sale badge */
 .product-card::before {

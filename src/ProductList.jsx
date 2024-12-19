@@ -304,7 +304,7 @@ function ProductList() {
                                     <img className="product-image" src={plant.image}></img>
                                     <p className="product-cost">{plant.cost}</p>
                                     <p  className="product-description">{plant.description}</p>
-                                    <button className="product-button" onClick={() => handleAddToCart(plant)}>Add to Cart</button>
+                                    <button disabled={Object.keys(addedToCart).length > 0 && addedToCart[plant.name]}  className="product-button" onClick={() => handleAddToCart(plant)}>Add to Cart</button>
                                 </div>
                             ))}
                         </div>
